@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HND Clothing - Premium Kids Fashion Brand">
+    <title>HND Clothing | Premium Kids Fashion</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Core Variables & Reset */
+        :root {
+            --primary-black: #111111;
+            --primary-white: #ffffff;
+            --luxury-gold: #D4AF37;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary-black);
+            background-color: var(--primary-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Utility Classes */
+        .text-gold { color: var(--luxury-gold) !important; }
+        .bg-gold { background-color: var(--luxury-gold) !important; }
+        .bg-black { background-color: var(--primary-black) !important; }
+        .section-padding { padding: 100px 0; }
+        
+        /* Buttons */
+        .btn-gold {
+            background-color: var(--luxury-gold);
+            color: var(--primary-white);
+            border: 1px solid var(--luxury-gold);
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--luxury-gold);
+        }
+        .btn-outline-gold {
+            background-color: transparent;
+            color: var(--luxury-gold);
+            border: 1px solid var(--luxury-gold);
+            padding: 12px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--luxury-gold);
+            color: var(--primary-white);
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(17, 17, 17, 0.95);
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-white) !important;
+            letter-spacing: 2px;
+        }
+        .nav-link {
+            color: var(--primary-white) !important;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--luxury-gold) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--primary-white);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* Hover Zoom Effect for Images */
+        .hover-zoom {
+            overflow: hidden;
+            position: relative;
+        }
+        .hover-zoom img {
+            transition: transform 0.6s ease;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+        .hover-zoom .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 20px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .hover-zoom:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Features/Why Choose Us */
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--luxury-gold);
+            margin-bottom: 20px;
+        }
+
+        /* Form Controls */
+        .form-control {
+            border-radius: 0;
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--luxury-gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 60px 0 20px;
+        }
+        footer a {
+            color: #aaa;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        footer a:hover {
+            color: var(--luxury-gold);
+        }
+
+        /* Scroll Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">a
+            <a class="navbar-brand" href="#">
+    <img src="assets/HND.png" alt="Website Logo" height="150">
+</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-link"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-link"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-link"><a class="nav-link" href="#collections">Collections</a></li>
+                    <li class="nav-link"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-link"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container reveal active">
+            <p>Elevate your everyday wardrobe with our exclusive collections.</p>
+            <div>
+                <a href="#about" class="btn btn-gold m-2">Learn More</a>
+                <a href="#collections" class="btn btn-outline-gold m-2">View Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row align-items-center reveal">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600&h=800" alt="About HND Clothing" class="img-fluid shadow">
+                    </div>
+                </div>
+                <div class="col-lg-6 px-lg-5">
+                    <h5 class="text-gold text-uppercase tracking-widest mb-3">Our Business</h5>
+                    <h2 class="mb-4">HND CLOTHING</h2>
+                    <p class="text-muted mb-4">HND CLOTHING is a premium kids fashion brand dedicated to bringing style, comfort, and quality together for the next generation. We believe that every child deserves clothing that not only looks great but also feels comfortable and supports their active lifestyle.</p>
+                    
+                    <div class="mb-4">
+                        <h5 class="mb-2">Our Mission</h5>
+                        <p class="text-muted small">Our collections are thoughtfully designed using high-quality materials, modern trends, and child-friendly craftsmanship to create outfits that parents trust and children love. From everyday essentials to special occasion wear, HND CLOTHING offers fashionable pieces that inspire confidence, creativity, and individuality.</p>
+                    </div>
+                    
+                    <div>
+                        <h5 class="mb-2">Our Vision</h5>
+                        <p class="text-muted small">At HND CLOTHING, we are committed to excellence in every detail, ensuring that each garment reflects our passion for premium quality and timeless style. We aim to create a brand that celebrates childhood while delivering the elegance and comfort that modern families seek.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collections" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5 reveal">
+                <h5 class="text-gold text-uppercase">Discover</h5>
+                <h2>Our Collections</h2>
+            </div>
+            <div class="row g-4 reveal">
+                <!-- Men's Wear -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 hover-zoom h-100">
+                        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=400&h=500" class="card-img-top" alt="Men's Wear">
+                        <div class="overlay">
+                            <h4 class="mb-0">Men's Wear</h4>
+                            <p class="small mb-0">Tailored perfection</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Women's Wear -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 hover-zoom h-100">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=400&h=500" class="card-img-top" alt="Women's Wear">
+                        <div class="overlay">
+                            <h4 class="mb-0">Women's Wear</h4>
+                            <p class="small mb-0">Effortless grace</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Casual -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 hover-zoom h-100">
+                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&q=80&w=400&h=500" class="card-img-top" alt="Casual Collection">
+                        <div class="overlay">
+                            <h4 class="mb-0">Casual</h4>
+                            <p class="small mb-0">Everyday essentials</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Premium -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card border-0 hover-zoom h-100">
+                        <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&q=80&w=400&h=500" class="card-img-top" alt="Premium Collection">
+                        <div class="overlay">
+                            <h4 class="mb-0">Premium</h4>
+                            <p class="small mb-0">Exclusive luxury pieces</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-padding bg-black text-white">
+        <div class="container text-center reveal">
+            <h5 class="text-gold text-uppercase mb-5">The HND CLOTHING Standard</h5>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <i class="fas fa-gem feature-icon"></i>
+                    <h4>Premium Materials</h4>
+                    <p class="text-white small">Ethically sourced fabrics designed for durability and comfort.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fas fa-pen-nib feature-icon"></i>
+                    <h4>Modern Designs</h4>
+                    <p class="text-white small">Contemporary aesthetics crafted for the modern individual.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fas fa-tags feature-icon"></i>
+                    <h4>Accessible Luxury</h4>
+                    <p class="text-white small">High-end fashion aesthetics without the exorbitant price tag.</p>
+                </div>
+                <div class="col-md-3">
+                    <i class="fas fa-heart feature-icon"></i>
+                    <h4>Customer First</h4>
+                    <p class="text-white small">Unwavering dedication to customer satisfaction and support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section-padding">
+        <div class="container-fluid px-4">
+            <div class="text-center mb-5 reveal">
+                <h5 class="text-gold text-uppercase">Lookbook</h5>
+                <h2>Campaign Gallery</h2>
+            </div>
+            <div class="row g-2 reveal">
+                <div class="col-md-4">
+                    <div class="hover-zoom" style="height: 400px;">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80" alt="Gallery Image 1">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="hover-zoom" style="height: 400px;">
+                        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80" alt="Gallery Image 2">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="hover-zoom" style="height: 400px;">
+                        <img src="https://images.unsplash.com/photo-1520975954732-57dd22299614?auto=format&fit=crop&q=80" alt="Gallery Image 3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container reveal">
+            <div class="text-center mb-5">
+                <h5 class="text-gold text-uppercase">Get in touch</h5>
+                <h2>Contact HND CLOTHING</h2>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="col-12">
+                                <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-gold w-100">Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-map-marker-alt text-gold fs-4 me-3 mt-1"></i>
+                        <div>
+                            <h5>Our Flagship Store</h5>
+                            <p class="text-muted mb-0">Colombo<br>Sri lanka</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-phone-alt text-gold fs-4 me-3 mt-1"></i>
+                        <div>
+                            <h5>Phone</h5>
+                            <p class="text-muted mb-0">+94 77 768 8212</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <i class="fas fa-envelope text-gold fs-4 me-3 mt-1"></i>
+                        <div>
+                            <h5>Email</h5>
+                            <p class="text-muted mb-0">info@hndclothing.lk</p>
+                        </div>
+                    </div>
+                    <!-- Google Map Placeholder -->
+                    <div class="w-100" style="height: 200px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;">
+                        <span class="text-muted"><i class="fas fa-map me-2"></i>Google Maps Integration Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row g-4 mb-4">
+                <div class="col-lg-4">
+                    <h3 class="font-playfair text-white mb-4"><img src="assets/logo.jpeg" alt="Website Logo" height="75"></span></h3>
+                    <p class="text-white small">Redefining modern elegance. HND Clothing brings you the perfect blend of luxury, comfort, and sophisticated design.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#about">Our Story</a></li>
+                        <li class="mb-2"><a href="#collections">Collections</a></li>
+                        <li class="mb-2"><a href="#gallery">Lookbook</a></li>
+                        <li class="mb-2"><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-4">Connect With Us</h5>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color: #333;">
+            <div class="text-center text-white small mt-4">
+                &copy; <span id="year"></span> HND Clothing. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Interactivity Scripts -->
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Scroll Reveal Animation Functionality
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // when to trigger the animation
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
